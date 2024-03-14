@@ -1,52 +1,45 @@
 const gridElement = document.getElementById('grid')
 const playButton = document.getElementById('playButton')
-const levelButton1 = document.getElementById('level1')
-const levelButton2 = document.getElementById('level2')
-const levelButton3 = document.getElementById('level3')
 const containerHTML = document.getElementById('container')
-const buttonsElement = document.getElementById('buttons')
+const levelsEl = document.getElementById('levels')
 
-let size = 0
-playButton.remove()
+    function getSize(){
+       let level = levelsEl.value
+       let size = 10
+       gridElement.className = 'grid'  
+       if (level === 'medium'){
+        gridElement.className = 'grid2'  
+           size = 9
+        } else if (level === 'hard'){
+            gridElement.className = 'grid3'  
+           size = 7 
+        }
+    return size
+    }
+    
+    function startGame(){
+    
+        gridElement.innerHTML = ''
+        let size = getSize()
+        cells = size ** 2
+        console.log(cells)
+    
+        for (let i = 0; i < cells; i++){
+            let position = i + 1
+            const newDiv = document.createElement('div')
+            newDiv.className = 'cell'
+            newDiv.innerHTML = position
+            gridElement.append(newDiv)
+            
+            newDiv.addEventListener('click', function(){
+            newDiv.classList.toggle('bg-color')
+            console.log(position)
+        })
+    }
+    }
 
-levelButton1.addEventListener('click', function(){
-  gridElement.className = 'grid'  
-  buttonsElement.append(playButton)
-    size = 10 ** 2
-    console.log(size)
-})
-
-levelButton2.addEventListener('click', function(){
-    gridElement.className = 'grid2'  
-    buttonsElement.append(playButton)
-    size = 9 ** 2
-    console.log(size)
-})
-
-levelButton3.addEventListener('click', function(){
-    gridElement.className = 'grid3'  
-    buttonsElement.append(playButton)
-    size = 7 ** 2
-    console.log(size)
-})
-
-playButton.addEventListener('click', function(){
-levelButton1.remove()
-levelButton2.remove()
-levelButton3.remove()   
-playButton.remove()
+    playButton.addEventListener('click', startGame)
+    
+    
 
 
-for (let i = 0; i < size; i++){
-    let position = i + 1
-    const newDiv = document.createElement('div')
-    newDiv.className = 'cell'
-    newDiv.innerHTML = position
-    gridElement.append(newDiv)
-
-    newDiv.addEventListener('click', function(){
-        newDiv.classList.toggle('bg-color')
-        console.log(position)
-    })
-} 
-})

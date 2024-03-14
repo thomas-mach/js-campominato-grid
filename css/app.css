@@ -50,6 +50,7 @@
 }
 
 .button{
+    margin: 10px 0;
     padding: 10px 30px;
     border-radius: 5px;
     border: none;
@@ -57,13 +58,12 @@
     background-color: darkkhaki;
 }
 
-.buttons{
-    margin: 10px 0; 
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
 .color_button{
     background-color: crimson;
+}
+
+.levels{
+    gap: 10px;
+    display: flex;
+    align-items: center;
 }
